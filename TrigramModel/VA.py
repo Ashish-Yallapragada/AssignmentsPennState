@@ -45,13 +45,13 @@ def generate_text(model, n, seed_text, max_length):
         words.append(next_word)
         prefix = tuple(words[-n+1:])
     return output
-    
+
 with open('C:/Users/ashis/OneDrive/Desktop/Assignments/Shakespeare.txt', 'r', encoding='utf-8') as f:
         text = f.read()
 vocabulary_size = len(set(text.split()))
 model = train_model(text, 3)
 smoothed_model = laplace_smoothing(model, vocabulary_size, 1)
-seed = "we are accounted poor citizens"
+seed = input("Enter the start words: ")
 generated_text = generate_text(smoothed_model, 3, seed, 50)
 print("Generated text:")
 print(generated_text)
